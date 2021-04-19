@@ -5,6 +5,7 @@
 
 #include "sigmoid.h"
 #include "helpers.h"
+#include "messenger.h"
 
 #define MAX 10
 static double synaptic_weights[3];
@@ -86,7 +87,9 @@ int main(int argc, char *argv[]){
 	
 	double test_1[3] = { 0, 1, 1 };	// expect ~1
 	
-	printf("Result %lf \n", analyze(test_1));
+	double result1 = analyze(test_1);
+	printf("Result %lf \n", result1);
+	printf("Result %d \n", mappingOutput(result1));
 	
 	double test_2[3] = { 0, 0, 0 };	// expect ~0
 	

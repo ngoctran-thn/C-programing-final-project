@@ -140,11 +140,13 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="helpers.h" />
+    <ClInclude Include="messenger.h" />
     <ClInclude Include="sigmoid.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="helpers.c" />
     <ClCompile Include="main.c" />
+    <ClCompile Include="messenger.c" />
     <ClCompile Include="sigmoid.c" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
