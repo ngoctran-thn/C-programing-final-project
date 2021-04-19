@@ -10,7 +10,7 @@
 static double synaptic_weights[3];
 
 double analyze(double input[]){
-	double result = dot(input,synaptic_weights,3);
+	double result = dot(input, synaptic_weights, 3);
 	result = sigmoid(result);
 	return result;
 }
@@ -59,19 +59,22 @@ void train(double training_set_inputs[][3], double training_set_outputs[], uint3
 
 int main(int argc, char *argv[]){
 
-	double training_set_inputs[MAX][3] = { {0, 0, 0},
+	// {temperature, humidity, wind}
+	double training_set_inputs[MAX][3] = { 
 										 {1, 1, 1},
-										 {1, 0, 1},
+										 {1, 1, 1},
+										 {1, 1, 1},
+										 {0, 0, 0},
+										 {0, 0, 0},
+										 {0, 0, 0},
+										 {0, 0, 0},
+										 {0, 0, 0},
 										 {0, 1, 1},
-										 {1, 0, 0},
-										 {1, 0, 0},
-										 {0, 0, 1},
-										 {1, 0, 1},
-										 {1, 0, 0},
 										 {0, 1, 1},
 									   };
-									   
-	double training_set_outputs[MAX] = { 0,1,1,0, 1,1,0,0, 1, 0};
+
+	// weather: 1 sunny, 0.75: partly sunny, 0.5: cloudy, 0.25: light rain, 0: rain
+	double training_set_outputs[MAX] = { 1, 1 , 1 , 1, 0, 0, 0, 0, 1, 1};
 
 	srand(1);
 	
@@ -81,11 +84,11 @@ int main(int argc, char *argv[]){
 	
 	train(training_set_inputs, training_set_outputs, 10000);
 	
-	double test_1[3] = {0,0,1};
+	double test_1[3] = { 0, 1, 1 };	// expect ~1
 	
 	printf("Result %lf \n", analyze(test_1));
 	
-	double test_2[3] = {1,0,0};
+	double test_2[3] = { 0, 0, 0 };	// expect ~0
 	
 	printf("Result %lf \n", analyze(test_2));
 	
