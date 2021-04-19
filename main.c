@@ -61,15 +61,16 @@ void train(WeatherCondition training_set_inputs[], double training_set_outputs[]
 
 int main(int argc, char *argv[]){
 	double x, y, z;
+	
 	printf(" The program will be based on your data ( temperature, humidity and windy)\n");
 	printf(" In order to give you some suggestion of activities\n");
-	printf("Please the temperature\n");
+	printf("Please enter the temperature ( 1 if more than 10 C degree, 0 otherwise ): ");
 	scanf_s("%lf", &x);
 
-	printf("Please the humidity\n");
+	printf("Please enter the humidity ( 1 if more than 50 %, 0 otherwise ): ");
 	scanf_s("%lf", &y);
 
-	printf("Please the windy\n");
+	printf("Please enter the windy ( 1 if more than 20 km/h, 0 otherwise ): ");
 	scanf_s("%lf", &z);
 	WeatherCondition* data = readTrainingInputFromFile();
 	WeatherCondition training_set_inputs_weather[MAX];
@@ -97,6 +98,7 @@ int main(int argc, char *argv[]){
 
 	
 	double forecastResult = analyze(userInput);
+	printf("The analyze result is %lf\n", forecastResult);
 	WEATHER weather = mappingOutput(forecastResult);
 	printf("Temperature: %.0f\nHumidity: %.0f\nWindy: %.0f\n", userInput[0], userInput[1], userInput[2]);
 	printf("The weather is: %s. You can %s.\n", getWeatherName(weather), suggestActivity(weather));

@@ -28,7 +28,7 @@ char* getWeatherName(WEATHER weather) {
 
 char* suggestActivity(WEATHER weather) {
 	char* sunnyActivities[] = { "go swimming", "go camping", "go rowing" };
-	char* partlySunnyActivities[] = { "take photography", "go cycling", "go climbing" };
+	char* partlySunnyActivities[] = { "go to take photography", "go cycling", "go climbing" };
 	char* cloudyActivities[] = { "go jogging", "do planning trees", "hang out with dogs" };
 	char* rainnyActivities[] = { "go to cinema", "go to library", "go sleeping" };
 

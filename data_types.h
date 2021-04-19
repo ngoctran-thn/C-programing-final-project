@@ -34,4 +34,4 @@ The output dataset must contain the same number of samples (records) to the inpu
 */
 double* readTrainingOutputFromFile();
 
-WeatherCondition preConvertUserData(int n);
+WeatherCondition ConvertUserData(int x, int y, int z, WeatherCondition convertedUserData);
