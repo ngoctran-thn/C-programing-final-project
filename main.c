@@ -79,19 +79,12 @@ int main(int argc, char *argv[]){
 	
 	train(training_set_inputs_weather, training_set_outputs, 10000);
 	
-	double test_1[3] = { 0, 1, 1 };	// expect ~1
+	double userInput[3] = { 0, 1, 1 };
 	
-	double result1 = analyze(test_1);
-	printf("Result %lf \n", result1);
-
-	WEATHER weather1 = mappingOutput(result1);
-	printf("Result %d \n", weather1);
-	printf("The weather is: %s. You can %s.\n", getWeatherName(weather1), suggestActivity(weather1));
-
-	
-	double test_2[3] = { 0, 0, 0 };	// expect ~0
-	
-	printf("Result %lf \n", analyze(test_2));
+	double forecastResult = analyze(userInput);
+	WEATHER weather = mappingOutput(forecastResult);
+	printf("Temperature: %.0f\nHumidity: %.0f\nWindy: %.0f\n", userInput[0], userInput[1], userInput[2]);
+	printf("The weather is: %s. You can %s.\n", getWeatherName(weather), suggestActivity(weather));
 	
 	return 0;
 }
