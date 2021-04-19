@@ -60,3 +60,26 @@ double* readTrainingOutputFromFile() {
 	fclose(file);
 	return results;
 }
+
+WeatherCondition preConvertUserData(int n) {
+	WeatherCondition preUD;
+	printf(" The program will be based on your data ( temperature, humidity and windy)\n");
+	printf(" In order to give you some suggestion of activities\n");
+	for (int i = 0; i < n; i++) {
+		if (i == 0) {
+			printf("Please the temperature\n");
+			scanf_s("%f", & preUD.temperature);
+		}
+		if (i == 1) {
+			printf("Please the temperature\n");
+			scanf_s("%f", &preUD.humidity);
+		}
+		if (i == 2) {
+			printf("Please the temperature\n");
+			scanf_s("%f", &preUD.humidity);
+		}
+
+
+	}
+	return preUD;
+}

@@ -33,3 +33,5 @@ Read the weather training output dataset from resource file.
 The output dataset must contain the same number of samples (records) to the input dataset.
 */
 double* readTrainingOutputFromFile();
+
+WeatherCondition preConvertUserData(int n);
