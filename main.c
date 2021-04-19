@@ -89,7 +89,10 @@ int main(int argc, char *argv[]){
 	
 	double result1 = analyze(test_1);
 	printf("Result %lf \n", result1);
-	printf("Result %d \n", mappingOutput(result1));
+
+	WEATHER weather1 = mappingOutput(result1);
+	printf("Result %d \n", weather1);
+	printf("The weather is: %s \n", getWeatherName(weather1));
 	
 	double test_2[3] = { 0, 0, 0 };	// expect ~0
 	

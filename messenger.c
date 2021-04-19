@@ -10,3 +10,19 @@ WEATHER mappingOutput(double result) {
 	return SUNNY;
 }
 
+char* getWeatherName(WEATHER weather) {
+	switch (weather) {
+	case RAIN:
+		return "rain";
+		break;
+	case CLOUDY:
+		return "cloudy";
+		break;
+	case PARTLY_SUNNY:
+		return "partly sunny";
+		break;
+	default:
+		return "sunny";
+		break;
+	}
+}

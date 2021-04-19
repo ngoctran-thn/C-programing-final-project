@@ -7,4 +7,4 @@ typedef enum weather WEATHER;
 
 WEATHER mappingOutput(double result);
 
-//char* getWeatherName(WEATHER weather);
+char* getWeatherName(WEATHER weather);
