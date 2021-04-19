@@ -6,6 +6,7 @@
 #include "sigmoid.h"
 #include "helpers.h"
 #include "messenger.h"
+#include "data_types.h"
 
 #define MAX 10
 static double synaptic_weights[3];
@@ -16,15 +17,16 @@ double analyze(double input[]){
 	return result;
 }
 
-void think_train(double input[][3], double output[]){
+void think_train(WeatherCondition input[], double output[]){
 		double results[MAX];
 		for (int i = 0; i < MAX; i++){
-			results[i] = dot(&input[i][0], synaptic_weights, 3);
+			double currentRow[3] = {input[i].temperature, input[i].humidity, input[i].windy};
+			results[i] = dot(&currentRow[0], synaptic_weights, 3);
 			output[i] = sigmoid(results[i]);
 		}
 }
 
-void train(double training_set_inputs[][3], double training_set_outputs[], uint32_t n){
+void train(WeatherCondition training_set_inputs[], double training_set_outputs[], uint32_t n){
 	
 	for(uint32_t i = 0; i < n; i++){
 		
@@ -40,9 +42,9 @@ void train(double training_set_inputs[][3], double training_set_outputs[], uint3
 
 		double transpose[3][MAX];
 		for (int j = 0; j < MAX; j++) {
-			transpose[0][j] = training_set_inputs[j][0];
-			transpose[1][j] = training_set_inputs[j][1];
-			transpose[2][j] = training_set_inputs[j][2];
+			transpose[0][j] = training_set_inputs[j].temperature;
+			transpose[1][j] = training_set_inputs[j].humidity;
+			transpose[2][j] = training_set_inputs[j].windy;
 		}
 
 		double adjustments[3];
@@ -59,23 +61,21 @@ void train(double training_set_inputs[][3], double training_set_outputs[], uint3
 }
 
 int main(int argc, char *argv[]){
-
-	// {temperature, humidity, wind}
-	double training_set_inputs[MAX][3] = { 
-										 {1, 1, 1},
-										 {1, 1, 1},
-										 {1, 1, 1},
-										 {0, 0, 0},
-										 {0, 0, 0},
-										 {0, 0, 0},
-										 {0, 0, 0},
-										 {0, 0, 0},
-										 {0, 1, 1},
-										 {0, 1, 1},
-									   };
+	WeatherCondition training_set_inputs_weather[MAX] = {
+		getWeatherCondition(1, 1, 1),
+		getWeatherCondition(1, 1, 1),
+		getWeatherCondition(1, 1, 1),
+		getWeatherCondition(0, 0, 0),
+		getWeatherCondition(0, 0, 0),
+		getWeatherCondition(0, 0, 0),
+		getWeatherCondition(0, 0, 0),
+		getWeatherCondition(0, 0, 0),
+		getWeatherCondition(0, 1, 1),
+		getWeatherCondition(0, 1, 1),
+	};
 
 	// weather: 1 sunny, 0.75: partly sunny, 0.5: cloudy, 0.25: light rain, 0: rain
-	double training_set_outputs[MAX] = { 1, 1 , 1 , 1, 0, 0, 0, 0, 1, 1};
+	double training_set_outputs[MAX] = { 1, 1 , 1 , 1, 0, 0, 0, 0, 1, 1 };
 
 	srand(1);
 	
@@ -83,7 +83,7 @@ int main(int argc, char *argv[]){
 	synaptic_weights[1] = 2 * ((double)rand()/RAND_MAX) - 1;
 	synaptic_weights[2] = 2 * ((double)rand()/RAND_MAX) - 1;
 	
-	train(training_set_inputs, training_set_outputs, 10000);
+	train(training_set_inputs_weather, training_set_outputs, 10000);
 	
 	double test_1[3] = { 0, 1, 1 };	// expect ~1
 	

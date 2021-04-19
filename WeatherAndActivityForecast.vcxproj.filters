@@ -24,6 +24,9 @@
     <ClInclude Include="messenger.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="data_types.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="helpers.c">
@@ -36,6 +39,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="messenger.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="data_types.c">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

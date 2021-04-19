@@ -139,11 +139,13 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="data_types.h" />
     <ClInclude Include="helpers.h" />
     <ClInclude Include="messenger.h" />
     <ClInclude Include="sigmoid.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="data_types.c" />
     <ClCompile Include="helpers.c" />
     <ClCompile Include="main.c" />
     <ClCompile Include="messenger.c" />
