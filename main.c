@@ -8,7 +8,6 @@
 #include "messenger.h"
 #include "data_types.h"
 
-#define MAX 10
 static double synaptic_weights[3];
 
 double analyze(double input[]){
@@ -61,18 +60,11 @@ void train(WeatherCondition training_set_inputs[], double training_set_outputs[]
 }
 
 int main(int argc, char *argv[]){
-	WeatherCondition training_set_inputs_weather[MAX] = {
-		getWeatherCondition(1, 1, 1),
-		getWeatherCondition(1, 1, 1),
-		getWeatherCondition(1, 1, 1),
-		getWeatherCondition(0, 0, 0),
-		getWeatherCondition(0, 0, 0),
-		getWeatherCondition(0, 0, 0),
-		getWeatherCondition(0, 0, 0),
-		getWeatherCondition(0, 0, 0),
-		getWeatherCondition(0, 1, 1),
-		getWeatherCondition(0, 1, 1),
-	};
+	WeatherCondition* data = readDataFromFile();
+	WeatherCondition training_set_inputs_weather[MAX];
+	for (int i = 0; i < MAX; i++) {
+		training_set_inputs_weather[i] = data[i];
+	}
 
 	// weather: 1 sunny, 0.75: partly sunny, 0.5: cloudy, 0.25: light rain, 0: rain
 	double training_set_outputs[MAX] = { 1, 1 , 1 , 1, 0, 0, 0, 0, 1, 1 };

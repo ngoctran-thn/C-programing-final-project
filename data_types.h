@@ -1,5 +1,7 @@
 #pragma once
 
+#define MAX 10
+
 struct WeatherCondition {
 	double temperature;
 	double humidity;
