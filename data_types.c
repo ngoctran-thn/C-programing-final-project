@@ -7,3 +7,7 @@ WeatherCondition getWeatherCondition(double t, double h, double w) {
 	wc.windy = w;
 	return wc;
 }
+
+WeatherCondition* readDataFromFile() {
+
+}
