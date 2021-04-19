@@ -25,4 +25,11 @@ Read the weather dataset from resource file.
 
 \return An pointer to the array of WeatherCondition(s)
 */
-WeatherCondition* readDataFromFile();
+WeatherCondition* readTrainingInputFromFile();
+
+/*
+Read the weather training output dataset from resource file.
+
+The output dataset must contain the same number of samples (records) to the input dataset.
+*/
+double* readTrainingOutputFromFile();

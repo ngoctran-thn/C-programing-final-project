@@ -60,14 +60,16 @@ void train(WeatherCondition training_set_inputs[], double training_set_outputs[]
 }
 
 int main(int argc, char *argv[]){
-	WeatherCondition* data = readDataFromFile();
+	WeatherCondition* data = readTrainingInputFromFile();
 	WeatherCondition training_set_inputs_weather[MAX];
+
+	double* outputData = readTrainingOutputFromFile();
+	double training_set_outputs[MAX];
+
 	for (int i = 0; i < MAX; i++) {
 		training_set_inputs_weather[i] = data[i];
+		training_set_outputs[i] = outputData[i];
 	}
-
-	// weather: 1 sunny, 0.75: partly sunny, 0.5: cloudy, 0.25: light rain, 0: rain
-	double training_set_outputs[MAX] = { 1, 1 , 1 , 1, 0, 0, 0, 0, 1, 1 };
 
 	srand(1);
 	

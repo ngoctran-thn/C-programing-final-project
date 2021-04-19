@@ -14,12 +14,12 @@ WeatherCondition getWeatherCondition(double t, double h, double w) {
 	return wc;
 }
 
-WeatherCondition* readDataFromFile() {
+WeatherCondition* readTrainingInputFromFile() {
 	FILE* file;
-	file = fopen("weather_data.txt", "r");
+	file = fopen("weather_data_training_input.txt", "r");
 
 	if (file == NULL) {
-		printf("Error: can't open file.\n");
+		printf("Error: can't open weather_data_training_input.txt file.\n");
 		exit(EXIT_FAILURE);
 	}
 	WeatherCondition results[MAX];
@@ -33,5 +33,30 @@ WeatherCondition* readDataFromFile() {
 	}
 	fclose(file);
 
+	return results;
+}
+
+double* readTrainingOutputFromFile() {
+	FILE* file;
+	file = fopen("weather_data_training_output.txt", "r");
+
+	if (file == NULL) {
+		printf("Error: can't open file.\n");
+		exit(EXIT_FAILURE);
+	}
+
+	double results[MAX];
+
+	char c[2 * MAX];
+	fgets(c, 2 * MAX , file);
+
+	int j = 0;
+	for (int i = 0; i < 2*MAX; i++) {
+		if (i % 2 == 0) {
+			results[j++] = atoi(&c[i]);
+		}
+	}
+	
+	fclose(file);
 	return results;
 }
