@@ -23,6 +23,28 @@ char* getWeatherName(WEATHER weather) {
 		break;
 	default:
 		return "sunny";
+	}
+}
+
+char* suggestActivity(WEATHER weather) {
+	char* sunnyActivities[] = { "go swimming", "go camping", "go rowing" };
+	char* partlySunnyActivities[] = { "take photography", "go cycling", "go climbing" };
+	char* cloudyActivities[] = { "go jogging", "do planning trees", "hang out with dogs" };
+	char* rainnyActivities[] = { "go to cinema", "go to library", "go sleeping" };
+
+	int randNumber = time(0) % 3;
+	switch (weather) {
+	case RAIN:
+		return rainnyActivities[randNumber];
 		break;
+	case CLOUDY:
+		return cloudyActivities[randNumber];
+		break;
+	case PARTLY_SUNNY:
+		return partlySunnyActivities[randNumber];
+		break;
+
+	default:
+		return  sunnyActivities[randNumber];
 	}
 }

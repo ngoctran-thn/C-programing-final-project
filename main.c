@@ -92,7 +92,8 @@ int main(int argc, char *argv[]){
 
 	WEATHER weather1 = mappingOutput(result1);
 	printf("Result %d \n", weather1);
-	printf("The weather is: %s \n", getWeatherName(weather1));
+	printf("The weather is: %s. You can %s.\n", getWeatherName(weather1), suggestActivity(weather1));
+
 	
 	double test_2[3] = { 0, 0, 0 };	// expect ~0
 	
